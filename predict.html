@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}Predict Revenue{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2>Enterprise Revenue Prediction</h2>
+          <p>Provide the company details below to estimate annual enterprise revenue.</p>
+        </div>
+
+        <form method="post" action="{{ url_for('predict') }}" class="needs-validation" novalidate>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <label for="employees" class="form-label">Number of employees</label>
+              <input type="number" class="form-control" id="employees" name="employees" min="0" step="1" required>
+              <div class="form-text">Total employee count for the enterprise.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="market_cap" class="form-label">Market capitalization</label>
+              <input type="number" class="form-control" id="market_cap" name="market_cap" min="0" step="0.01" required>
+              <div class="form-text">Total market value of the company.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="net_income" class="form-label">Net income</label>
+              <input type="number" class="form-control" id="net_income" name="net_income" min="-999999999999" step="0.01" required>
+              <div class="form-text">Net profit or loss after taxes.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="enterprise_group_jurisdiction" class="form-label">Enterprise group jurisdiction</label>
+              <select class="form-select" id="enterprise_group_jurisdiction" name="enterprise_group_jurisdiction" required>
+                <option value="">Select jurisdiction</option>
+                {% for value in jurisdictions %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="enterprise_group_entity_status" class="form-label">Enterprise group entity status</label>
+              <select class="form-select" id="enterprise_group_entity_status" name="enterprise_group_entity_status" required>
+                <option value="">Select status</option>
+                {% for status in entity_status_options %}
+                  <option value="{{ status }}">{{ status }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="company_type" class="form-label">Company type</label>
+              <select class="form-select" id="company_type" name="company_type" required>
+                <option value="">Select company type</option>
+                {% for value in company_types %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="revenue_currency" class="form-label">Revenue currency</label>
+              <select class="form-select" id="revenue_currency" name="revenue_currency" required>
+                <option value="">Select currency</option>
+                {% for value in revenue_currencies %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="net_income_currency" class="form-label">Net income currency</label>
+              <select class="form-select" id="net_income_currency" name="net_income_currency" required>
+                <option value="">Select currency</option>
+                {% for value in net_income_currencies %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="market_cap_currency" class="form-label">Market capitalization currency</label>
+              <select class="form-select" id="market_cap_currency" name="market_cap_currency" required>
+                <option value="">Select currency</option>
+                {% for value in market_cap_currencies %}
+                  <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="legal_units_count" class="form-label">Legal units count</label>
+              <input type="number" class="form-control" id="legal_units_count" name="legal_units_count" min="0" step="1" required>
+            </div>
+
+            <div class="col-md-4">
+              <label for="direct_subsidiaries_count" class="form-label">Direct subsidiaries count</label>
+              <input type="number" class="form-control" id="direct_subsidiaries_count" name="direct_subsidiaries_count" min="0" step="1" required>
+            </div>
+
+            <div class="col-md-4">
+              <label for="max_hierarchy_depth" class="form-label">Maximum hierarchy depth</label>
+              <input type="number" class="form-control" id="max_hierarchy_depth" name="max_hierarchy_depth" min="0" step="1" required>
+            </div>
+
+            <div class="col-md-6">
+              <label for="is_standalone_entity" class="form-label">Is standalone entity</label>
+              <select class="form-select" id="is_standalone_entity" name="is_standalone_entity" required>
+                <option value="">Select option</option>
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-4">
+            <button type="reset" class="btn btn-secondary">Reset</button>
+            <button type="submit" class="btn btn-primary btn-lg">Predict Revenue</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

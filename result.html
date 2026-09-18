@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Revenue Estimate{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="result-card text-center">
+        <span class="badge text-bg-info mb-3">Estimated Revenue</span>
+        <h2 class="display-6 mb-3">The estimated enterprise revenue is</h2>
+        <div class="revenue-number">{{ "{:,.2f}".format(prediction) }}</div>
+        <p class="text-muted mt-2">Predicted from the current enterprise profile using the trained Random Forest model.</p>
+
+        <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+          <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg">Predict Again</a>
+          <a href="{{ url_for('home') }}" class="btn btn-outline-primary btn-lg">Back to Home</a>
+        </div>
+      </div>
+
+      <div class="panel-card mt-4">
+        <div class="panel-header">
+          <h3>Submitted Enterprise Details</h3>
+        </div>
+        <div class="row g-3 summary-grid">
+          <div class="col-md-6"><strong>Employees:</strong> {{ summary.employees }}</div>
+          <div class="col-md-6"><strong>Market Capitalization:</strong> {{ summary.market_cap }}</div>
+          <div class="col-md-6"><strong>Net Income:</strong> {{ summary.net_income }}</div>
+          <div class="col-md-6"><strong>Jurisdiction:</strong> {{ summary.jurisdiction }}</div>
+          <div class="col-md-6"><strong>Entity Status:</strong> {{ summary.entity_status }}</div>
+          <div class="col-md-6"><strong>Company Type:</strong> {{ summary.company_type }}</div>
+          <div class="col-md-6"><strong>Revenue Currency:</strong> {{ summary.revenue_currency }}</div>
+          <div class="col-md-6"><strong>Net Income Currency:</strong> {{ summary.net_income_currency }}</div>
+          <div class="col-md-6"><strong>Market Cap Currency:</strong> {{ summary.market_cap_currency }}</div>
+          <div class="col-md-6"><strong>Legal Units Count:</strong> {{ summary.legal_units_count }}</div>
+          <div class="col-md-6"><strong>Direct Subsidiaries:</strong> {{ summary.direct_subsidiaries_count }}</div>
+          <div class="col-md-6"><strong>Max Hierarchy Depth:</strong> {{ summary.max_hierarchy_depth }}</div>
+          <div class="col-md-6"><strong>Standalone Entity:</strong> {{ summary.is_standalone_entity }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

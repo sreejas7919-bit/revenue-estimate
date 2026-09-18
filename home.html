@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | Enterprise Revenue Prediction{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="eyebrow">Machine Learning Forecasting</span>
+        <h1>Enterprise Revenue Prediction</h1>
+        <p class="lead">
+          This application uses a trained Random Forest model to estimate enterprise revenue based on company structure,
+          financial indicators, and operating context.
+        </p>
+        <p>
+          By combining financial signals such as employees, market capitalization, net income, company type,
+          jurisdiction, and enterprise details, the model helps assess revenue potential for enterprise-scale organizations.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg">Predict Revenue</a>
+          <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-card">
+          <div class="card-body p-4">
+            <h3 class="card-title mb-3">Key Inputs</h3>
+            <ul class="feature-list">
+              <li>Employees</li>
+              <li>Market Capitalization</li>
+              <li>Net Income</li>
+              <li>Company Type</li>
+              <li>Jurisdiction</li>
+              <li>Enterprise Structure</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light" id="about">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="info-card h-100">
+          <div class="icon">📊</div>
+          <h4>Revenue Forecasting</h4>
+          <p>Estimate enterprise revenue using a trained machine learning model and financial indicators.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info-card h-100">
+          <div class="icon">🏢</div>
+          <h4>Enterprise Signals</h4>
+          <p>Use company size, market capitalization, net income, and group structure to produce a more informed estimate.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info-card h-100">
+          <div class="icon">⚙️</div>
+          <h4>Structured Inputs</h4>
+          <p>Enter required values with validation to ensure the model receives consistent and usable feature data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

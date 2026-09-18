@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}About | Enterprise Revenue Prediction{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2>About This Project</h2>
+        </div>
+        <p>
+          Enterprise Revenue Prediction is a machine learning application built to estimate revenue for enterprise-scale businesses using structured data and a trained Random Forest regressor.
+        </p>
+        <p>
+          The model uses operational and financial indicators such as employee count, market capitalization, net income,
+          company type, jurisdiction, and enterprise structure metadata. These inputs are transformed to match the trained feature schema before prediction.
+        </p>
+        <p>
+          The application is designed to provide a clean, responsive, and professional interface while keeping prediction logic transparent and safe by validating inputs before sending them to the model.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
